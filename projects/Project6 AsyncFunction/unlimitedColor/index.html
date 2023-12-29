@@ -1,1 +1,49 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<form>
+  <label>Color Changes after perticular interval</label>
+  <input type="submit" id="start" value="start">
+  <input type="submit" id="stop" value="stop"> 
+</form>
+<script>
+    let start=document.querySelector('#start');
+let stop=document.querySelector('#stop');
+var randomColor = function()
+{
+  const hex="123456789ABCDEF";
+  let color="#";
+  for(let i=0;i<6;i++)
+  {
+    color+= hex[Math.floor(Math.random()*16)];
+
+  }
+  return color;
+}
+let interval;
+let changecolor= function()
+{
+  interval=setInterval(changeColor,2000);
+  function changeColor()
+  {
+    document.body.style.backgroundColor="#"+randomColor;
+  }
+}
+let stopchangecolor=function()
+{
+  clearInterval(changecolor)
+//   interval=null;
+}
+
+start.addEventListener('click',changecolor);
+stop.addEventListener('click',stopchangecolor);
+</script>
+</body>
+</html>
